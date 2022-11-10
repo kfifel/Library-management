@@ -31,7 +31,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="/pages/signe-in.php">
+                                    <a class="dropdown-item" href="/pages/sign-in.php">
                                         <div class="d-flex align-items-center">
                                             <div class="setting-icon"><i class="bi bi-lock-fill"></i></div>
                                             <div class="setting-text ms-3"><span>Logout</span></div>
