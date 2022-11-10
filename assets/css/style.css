@@ -7,3 +7,23 @@
     height:4rem;
     width:4rem;
 }
+body{
+    background-image: url("../images/bg1.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+nav, .sideBar{
+    background-color: #292827;
+}
+nav{
+    position:fixed;
+    width : 100%;
+}
+.sideBar{
+    position:fixed;
+    height: 100%;
+}
+.ml-8{
+    margin-left: 8.333%;
+}
