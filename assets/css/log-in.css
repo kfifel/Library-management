@@ -11,8 +11,10 @@ body{
     background-size:  40vw 60vh;
     background-repeat: no-repeat;
     background-position: 100% 100%;
-    width: 40vw;
 }
 h1{
     font-weight: bold;
+}
+.card{
+    height: 100%;
 }

@@ -12,7 +12,7 @@
 <body>
     <main>
         <div class="d-flex">
-            <div  class="card col-6  w-100 p-3 py-4 ">
+            <div  class="card col-5 p-3 py-4">
                 <h1 class="text-center">
                     <span>Log</span>
                     <span class="text-primary">in</span>
@@ -32,7 +32,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-6  w-100">
+            <div class="col-6  d-flex justify-content-center align-self-center">
                 <h1>YOU<span class="text-primary">BOOK</span></h1>
             </div>
         </div>
