@@ -18,3 +18,17 @@ h1{
 .card{
     height: 100%;
 }
+#h-100{
+    margin-left: 10%;
+    margin-top: 10%;
+    background-color: #CACACA;
+}
+.btn-primary{
+    background-color: #038DFE;
+}
+.text-primary{
+    color: #038DFE;
+}
+.title{
+    font-size: xxx-large;
+}
