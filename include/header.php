@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand d-flex justify-content-between justify-items-center text-white">
+    <nav class=" navbar-expand d-flex justify-content-between justify-items-center text-white">
         <div>
             <img src="/assets/images/youbook.png"  class="logo mx-5" alt="logo">
         </div>

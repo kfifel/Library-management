@@ -16,7 +16,19 @@ body{
 nav, #side_bar{
     background-color: #292827;
 }
-#sidBar{
-    position:fixed;
-    height: 100%;
+nav{
+    position: fixed;
+    width: 100vw;
+    z-index: 1;
+}
+#side_bar{
+    position:sticky;
+    left: 0;
+    bottom: 0;
+    top: 15.8%;
+    height: 100vh;
+}
+.book-photo{
+    width: 99%;
+    height: 70%;
 }

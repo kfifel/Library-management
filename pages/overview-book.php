@@ -19,7 +19,7 @@
 <?php  include '../include/header.php'; ?>
 <main>
     <div class="main-container d-flex">
-        <div class="sidebar" id="side_bar">
+        <div class="" id="side_bar">
             <?php include '../include/sidebar.php' ?>
         </div>
         <div class=" col-11 ml-8">
@@ -32,11 +32,11 @@
             </div>
             <div class="card-body">
                 <div class="">
-                    <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-5 row-cols-5 g-3 gap-3 book-list">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-5">
                         <div class="col">
                             <div class="card">
                                 <div class="card-head text-center">
-                                    <img src="/assets/images/book/b4.jpg" class="img-fluid mb-3 rounded-2" alt="" />
+                                    <img src="/assets/images/book/b4.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
                                     <h6 class="product-title">Men White Polo T-shirt</h6>
                                     <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
                                         <a href="javascript:;" class="btn btn-sm">
@@ -61,7 +61,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-head text-center">
-                                    <img src="/assets/images/book/b4.jpg" class="img-fluid mb-3 rounded-2" alt="" />
+                                    <img src="/assets/images/book/b4.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
                                     <h6 class="product-title">Men White Polo T-shirt</h6>
                                     <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
                                         <a href="javascript:;" class="btn btn-sm">
@@ -86,7 +86,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-head text-center">
-                                    <img src="/assets/images/book/b3.jpg" class="img-fluid mb-3 rounded-2" alt="" />
+                                    <img src="/assets/images/book/b3.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
                                     <h6 class="product-title">Men White Polo T-shirt</h6>
                                     <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
                                         <a href="javascript:;" class="btn btn-sm">
@@ -111,7 +111,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-head text-center">
-                                    <img src="/assets/images/book/b2.jpg" class="img-fluid mb-3 rounded-2" alt="" />
+                                    <img src="/assets/images/book/b2.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
                                     <h6 class="product-title">Men White Polo T-shirt</h6>
                                     <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
                                         <a href="javascript:;" class="btn btn-sm">
@@ -136,7 +136,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-head text-center">
-                                    <img src="/assets/images/book/b1.jpg" class="img-fluid mb-3 rounded-2" alt="" />
+                                    <img src="/assets/images/book/b1.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
                                     <h6 class="product-title">Men White Polo T-shirt</h6>
                                     <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
                                         <a href="javascript:;" class="btn btn-sm">
@@ -161,7 +161,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-head text-center">
-                                    <img src="/assets/images/bg1.jpg" class="img-fluid mb-3 rounded-2" alt="" />
+                                    <img src="/assets/images/bg1.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
                                     <h6 class="product-title">Men White Polo T-shirt</h6>
                                     <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
                                         <a href="javascript:;" class="btn btn-sm">

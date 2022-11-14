@@ -7,30 +7,16 @@
                     class="logo">
             </lord-icon>
         </a>
-        <a href="">
+        <a href="#">
             <lord-icon
                     src="https://cdn.lordicon.com/kipaqhoz.json"
                     trigger="morph"
-                    class="fa-lg"
                     colors="primary:#FFFFFF"
                     class="logo"
             >
             </lord-icon>
         </a>
-        <a href="">
-            <lord-icon
-                    src="https://cdn.lordicon.com/ofwpzftr.json"
-                    trigger="hover"
-                    colors="primary:#FFFFFF"
-                    class="logo">
-            </lord-icon>
-        </a>
-        <a href="">
-            <lord-icon
-                    src="https://cdn.lordicon.com/hwuyodym.json"
-                    trigger="hover"
-                    colors="primary:#FFFFFF"
-                    class="logo">
-            </lord-icon>
+        <a href="#">
+            <i class="bi bi-person-plus fa-4x text-white mx-2"></i>
         </a>
 </div>
