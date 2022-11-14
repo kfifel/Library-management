@@ -18,7 +18,7 @@
                     <span class="text-primary">in</span>
                 </h1>
                 <div class="text-center mt-5">
-                    <form action="login.php" method="post" class="d-grid gap-5">
+                    <form action="/admin/script.php" method="post" class="d-grid gap-5">
                             <div>
                                 <input type="email" name="email" placeholder="Email" class="form-control">
                             </div>
@@ -26,7 +26,7 @@
                                 <input type="password" name="password" placeholder="mot de passe" class="form-control">
                             </div>
                             <div class="d-flex justify-content-between">
-                                <input type="submit" value="Connexion" class="btn btn-primary">
+                                <input type="submit" value="Connexion" name="connexion" class="btn btn-primary">
                                 <span><a href="#">Récuperer votre mot de passe</a></span>
                             </div>
                     </form>

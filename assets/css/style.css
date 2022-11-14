@@ -13,17 +13,10 @@ body{
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
-nav, .sideBar{
+nav, #side_bar{
     background-color: #292827;
 }
-nav{
-    position:fixed;
-    width : 100%;
-}
-.sideBar{
+#sidBar{
     position:fixed;
     height: 100%;
-}
-.ml-8{
-    margin-left: 8.333%;
 }
