@@ -16,7 +16,8 @@
                                         <lord-icon
                                             src="https://cdn.lordicon.com/dxjqoygy.json"
                                             trigger="hover"
-                                            colors="primary:#FFFFFF,secondary:#038dfe">
+                                            colors="primary:#FFFFFF,secondary:#038dfe"
+                                            style="width:50px; height:50px;">
                                         </lord-icon>
                                     </div>
                                 </div>
