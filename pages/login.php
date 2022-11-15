@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(isset($_SESSION['id_admin'])){
+        header('Location: /index.php');
+    }
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,12 +13,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/log-in.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <title>Log in</title>
 </head>
 <body>
-    <main>
-        <div class="d-flex">
-            <div  class="card col-5 p-3 py-4">
+<main>
+    <div class="d-flex">
+        <div  class="card col-5 p-3 py-2 align-content-center" id="h-100">
+            <div class="card-body row justify-content-center">
                 <h1 class="text-center">
                     <span>Log</span>
                     <span class="text-primary">in</span>
@@ -32,10 +40,11 @@
                     </form>
                 </div>
             </div>
-            <div class="col-6  d-flex justify-content-center align-self-center">
-                <h1>YOU<span class="text-primary">BOOK</span></h1>
-            </div>
         </div>
-    </main>
+        <div class="col  d-flex justify-content-center align-self-center title">
+            <h1><span>YOU</span><span class="text-primary">BOOK</span></h1>
+        </div>
+    </div>
+</main>
 </body>
 </html>
