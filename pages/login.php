@@ -26,7 +26,7 @@
                                 <input type="password" name="password" placeholder="mot de passe" class="form-control">
                             </div>
                             <div class="d-flex justify-content-between">
-                                <input type="submit" value="Connexion" name="connexion" class="btn btn-primary">
+                                <input type="submit" value="Connexion" name="log-in" class="btn btn-primary">
                                 <span><a href="#">Récuperer votre mot de passe</a></span>
                             </div>
                     </form>

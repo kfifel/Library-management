@@ -3,8 +3,8 @@
         <div>
             <img src="/assets/images/youbook.png"  class="logo mx-5" alt="logo">
         </div>
-        <div>
-            Bonjour Mr ...
+        <div class="p-4">
+            Bonjour Mr <?=$_SESSION['first_name_admin']?>
         </div>
         <div>
             <div class="top-navbar-right">
