@@ -25,10 +25,16 @@ nav{
     position:sticky;
     left: 0;
     bottom: 0;
-    top: 15.8%;
+    top: 15.4%;
     height: 100vh;
 }
 .book-photo{
     width: 99%;
     height: 70%;
+}
+.mt-10{
+    margin-top: 15.4vh;
+}
+footer{
+    background-color: #34160E;
 }
