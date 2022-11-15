@@ -1,5 +1,8 @@
 <?php
-
+    session_start();
+    if (!$_SESSION['id_admin']) {
+        header("location: /pages/login.php");
+    }
     $conn = mysqli_connect("localhost", "root", "", "library");
 
     try{
