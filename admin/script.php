@@ -1,10 +1,9 @@
 <?php
     include('database/dbConnexion.php');
-    session_start();
 
     if(isset($_POST['log-in']))  login();
     if(isset($_POST['log-up'])) logUp();
-
+    if(isset($_GET['log-out'])) logOut();
 
 
 
@@ -19,7 +18,7 @@
         $rows = mysqli_fetch_assoc($result);
 
         if ( mysqli_num_rows($result) > 0) {
-            $_SESSION['id']  = $rows['id'];
+            $_SESSION['id_admin']  = $rows['id'];
             $_SESSION['first_name_admin'] = $rows['first_name'];
             $_SESSION['last_name_admin']  = $rows['last_name'];
             $_SESSION['email']  = $rows['email'];
@@ -54,6 +53,11 @@
             header('Location: /index.php');
         }
 
+    }
+
+    function logOut(){
+        session_destroy();
+        header('Location: ../pages/login.php');
     }
 
     function vierifyString($str): string{
