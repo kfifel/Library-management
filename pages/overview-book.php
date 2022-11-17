@@ -1,4 +1,5 @@
 <?php
+include '../admin/script.php';
 ?>
 
 <!doctype html>
@@ -22,35 +23,41 @@
         <div class="" id="side_bar">
             <?php include '../include/sidebar.php' ?>
         </div>
-        <div class=" col-11 ml-8">
+        <div class=" col-11 ml-8 mt-10">
             <div class="card-header p-3 text-white">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item">livres</li>
                     <li class="breadcrumb-item breadcrumb-active">Apreçu</li>
                 </ul>
-                <h1> List des Livres</h1>
+                <div class="d-flex justify-content-between">
+                    <h1> List des Livres</h1>
+                    <button class="btn btn-outline-light rounded-5" data-bs-toggle="modal" data-bs-target="#add-book">
+                        <i class="bi bi-plus-circle"></i>
+                        Ajouter livres
+                    </button>
+                </div>
             </div>
-            <div class="card-body">
+            <div class="card-body p-5">
                 <div class="">
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-5">
-                        <div class="col">
+                        <div class="col mb-4">
                             <div class="card">
                                 <div class="card-head text-center">
-                                    <img src="/assets/images/book/b4.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
+                                    <img src="/assdets/images/book/b4.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
                                     <h6 class="product-title">Men White Polo T-shirt</h6>
                                     <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
                                         <a href="javascript:;" class="btn btn-sm">
                                             <lord-icon
-                                                src="https://cdn.lordicon.com/wloilxuq.json"
-                                                trigger="hover"
-                                                colors="primary:#006cf1,secondary:#006cf1">
+                                                    src="https://cdn.lordicon.com/wloilxuq.json"
+                                                    trigger="hover"
+                                                    colors="primary:#006cf1,secondary:#006cf1">
                                             </lord-icon>
                                         </a>
                                         <a href="javascript:;" class="btn btn-sm">
                                             <lord-icon
-                                                src="https://cdn.lordicon.com/jmkrnisz.json"
-                                                trigger="hover"
-                                                colors="primary:#DC3545"
+                                                    src="https://cdn.lordicon.com/jmkrnisz.json"
+                                                    trigger="hover"
+                                                    colors="primary:#DC3545"
                                             >
                                             </lord-icon>
                                         </a>
@@ -66,16 +73,16 @@
                                     <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
                                         <a href="javascript:;" class="btn btn-sm">
                                             <lord-icon
-                                                src="https://cdn.lordicon.com/wloilxuq.json"
-                                                trigger="hover"
-                                                colors="primary:#006cf1,secondary:#006cf1">
+                                                    src="https://cdn.lordicon.com/wloilxuq.json"
+                                                    trigger="hover"
+                                                    colors="primary:#006cf1,secondary:#006cf1">
                                             </lord-icon>
                                         </a>
                                         <a href="javascript:;" class="btn btn-sm">
                                             <lord-icon
-                                                src="https://cdn.lordicon.com/jmkrnisz.json"
-                                                trigger="hover"
-                                                colors="primary:#DC3545"
+                                                    src="https://cdn.lordicon.com/jmkrnisz.json"
+                                                    trigger="hover"
+                                                    colors="primary:#DC3545"
                                             >
                                             </lord-icon>
                                         </a>
@@ -161,7 +168,182 @@
                         <div class="col">
                             <div class="card">
                                 <div class="card-head text-center">
-                                    <img src="/assets/images/bg1.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
+                                    <img src="/assets/images/book/b4.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
+                                    <h6 class="product-title">Men White Polo T-shirt</h6>
+                                    <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
+                                        <a href="javascript:;" class="btn btn-sm">
+                                            <lord-icon
+                                                    src="https://cdn.lordicon.com/wloilxuq.json"
+                                                    trigger="hover"
+                                                    colors="primary:#006cf1,secondary:#006cf1">
+                                            </lord-icon>
+                                        </a>
+                                        <a href="javascript:;" class="btn btn-sm">
+                                            <lord-icon
+                                                    src="https://cdn.lordicon.com/jmkrnisz.json"
+                                                    trigger="hover"
+                                                    colors="primary:#DC3545"
+                                            >
+                                            </lord-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-head text-center">
+                                    <img src="/assets/images/book/b4.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
+                                    <h6 class="product-title">Men White Polo T-shirt</h6>
+                                    <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
+                                        <a href="javascript:;" class="btn btn-sm">
+                                            <lord-icon
+                                                    src="https://cdn.lordicon.com/wloilxuq.json"
+                                                    trigger="hover"
+                                                    colors="primary:#006cf1,secondary:#006cf1">
+                                            </lord-icon>
+                                        </a>
+                                        <a href="javascript:;" class="btn btn-sm">
+                                            <lord-icon
+                                                    src="https://cdn.lordicon.com/jmkrnisz.json"
+                                                    trigger="hover"
+                                                    colors="primary:#DC3545"
+                                            >
+                                            </lord-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-head text-center">
+                                    <img src="/assets/images/book/b4.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
+                                    <h6 class="product-title">Men White Polo T-shirt</h6>
+                                    <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
+                                        <a href="javascript:;" class="btn btn-sm">
+                                            <lord-icon
+                                                    src="https://cdn.lordicon.com/wloilxuq.json"
+                                                    trigger="hover"
+                                                    colors="primary:#006cf1,secondary:#006cf1">
+                                            </lord-icon>
+                                        </a>
+                                        <a href="javascript:;" class="btn btn-sm">
+                                            <lord-icon
+                                                    src="https://cdn.lordicon.com/jmkrnisz.json"
+                                                    trigger="hover"
+                                                    colors="primary:#DC3545"
+                                            >
+                                            </lord-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-head text-center">
+                                    <img src="/assets/images/book/b4.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
+                                    <h6 class="product-title">Men White Polo T-shirt</h6>
+                                    <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
+                                        <a href="javascript:;" class="btn btn-sm">
+                                            <lord-icon
+                                                    src="https://cdn.lordicon.com/wloilxuq.json"
+                                                    trigger="hover"
+                                                    colors="primary:#006cf1,secondary:#006cf1">
+                                            </lord-icon>
+                                        </a>
+                                        <a href="javascript:;" class="btn btn-sm">
+                                            <lord-icon
+                                                    src="https://cdn.lordicon.com/jmkrnisz.json"
+                                                    trigger="hover"
+                                                    colors="primary:#DC3545"
+                                            >
+                                            </lord-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-head text-center">
+                                    <img src="/assets/images/book/b4.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
+                                    <h6 class="product-title">Men White Polo T-shirt</h6>
+                                    <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
+                                        <a href="javascript:;" class="btn btn-sm">
+                                            <lord-icon
+                                                    src="https://cdn.lordicon.com/wloilxuq.json"
+                                                    trigger="hover"
+                                                    colors="primary:#006cf1,secondary:#006cf1">
+                                            </lord-icon>
+                                        </a>
+                                        <a href="javascript:;" class="btn btn-sm">
+                                            <lord-icon
+                                                    src="https://cdn.lordicon.com/jmkrnisz.json"
+                                                    trigger="hover"
+                                                    colors="primary:#DC3545"
+                                            >
+                                            </lord-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-head text-center">
+                                    <img src="/assets/images/book/b4.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
+                                    <h6 class="product-title">Men White Polo T-shirt</h6>
+                                    <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
+                                        <a href="javascript:;" class="btn btn-sm">
+                                            <lord-icon
+                                                    src="https://cdn.lordicon.com/wloilxuq.json"
+                                                    trigger="hover"
+                                                    colors="primary:#006cf1,secondary:#006cf1">
+                                            </lord-icon>
+                                        </a>
+                                        <a href="javascript:;" class="btn btn-sm">
+                                            <lord-icon
+                                                    src="https://cdn.lordicon.com/jmkrnisz.json"
+                                                    trigger="hover"
+                                                    colors="primary:#DC3545"
+                                            >
+                                            </lord-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-head text-center">
+                                    <img src="/assets/images/book/b4.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
+                                    <h6 class="product-title">Men White Polo T-shirt</h6>
+                                    <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
+                                        <a href="javascript:;" class="btn btn-sm">
+                                            <lord-icon
+                                                    src="https://cdn.lordicon.com/wloilxuq.json"
+                                                    trigger="hover"
+                                                    colors="primary:#006cf1,secondary:#006cf1">
+                                            </lord-icon>
+                                        </a>
+                                        <a href="javascript:;" class="btn btn-sm">
+                                            <lord-icon
+                                                    src="https://cdn.lordicon.com/jmkrnisz.json"
+                                                    trigger="hover"
+                                                    colors="primary:#DC3545"
+                                            >
+                                            </lord-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-head text-center">
+                                    <img src="/assets/images/book/b4.jpg" class="img-fluid mb-3 rounded-2 book-photo" alt="" />
                                     <h6 class="product-title">Men White Polo T-shirt</h6>
                                     <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
                                         <a href="javascript:;" class="btn btn-sm">
@@ -191,8 +373,63 @@
     </div>
 </main>
 <footer>
-    <span> @right 2022 you book </span>
+    <?php
+    include '../include/footer.php';
+    ?>
 </footer>
+
+
+<div class="modal fade" id="add-book" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="headerH5">ajouter livre</h5>
+                <button type="button" class="btn close" data-bs-dismiss="modal" aria-label="Close" id="closePopup">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="alertAdd">
+
+                </div>
+                <form id="form" action="../admin/script.php" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="isbn" class="col-form-label">isbn</label>
+                        <input type="text" id="isbn" name="isbn" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="title" class="form-label">titre:</label>
+                        <input type="text" class="form-control" name="title" id="title"  placeholder="title" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="n_page" class="col-form-label">nombre des pages</label>
+                        <input type="number" id="n_page" name="n_page" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity" class="col-form-label">quantité</label>
+                        <input type="number" id="quantity" name="quantity" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="img" class="col-form-label">image</label>
+                        <input type="file" id="img" name="img" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="Description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" name="description" id="Description" required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="close" onclick="closePopup()">Cancel</button>
+                        <button type="submit" name="add-book" class="btn pink text-white" id="add-book"  >Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script src="https://cdn.lordicon.com/qjzruarw.js"></script>

@@ -12,6 +12,12 @@ body{
     background-repeat: no-repeat;
     background-position: 100% 100%;
 }
+.bodyAddAdmin{
+    background-image: url("../images/bg1.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
 h1{
     font-weight: bold;
 }
@@ -31,4 +37,13 @@ h1{
 }
 .title{
     font-size: xxx-large;
+}
+#addAdmin{
+    margin-left: 7%;
+    margin-top: 5%;
+    background-color: #CACACA;
+}
+#logup{
+    height: 60vh;
+    width: 40vw;
 }

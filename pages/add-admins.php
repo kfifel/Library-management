@@ -44,17 +44,17 @@ if(!isset($_SESSION['id_admin'])){
                             <input type="password" name="password2" placeholder=" mot de passe" class="form-control">
                         </div>
                         <div class="d-flex justify-content-between">
-                            <input type="submit" value="Connexion" name="log-in" class="btn btn-primary">
+                            <input type="submit" value="Connexion" name="add-admin" class="btn btn-primary">
                             <span><a href="#">Récuperer votre mot de passe</a></span>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="col  d-flex justify-content-center align-self-center title">
-            <h1><span class="text-muted">YOU</span><span class="text-primary">BOOK</span></h1>
-            <div>
-                <img src="" alt="">
+        <div class="text-center d-grid justify-items-center  title">
+            <h1 class=" my-5"><span class="text-muted">YOU</span><span class="text-primary">BOOK</span></h1>
+            <div class="mt-5">
+                <img src="../assets/images/sigup.png" id="logup" alt="add admins up">
             </div>
         </div>
     </div>

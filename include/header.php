@@ -4,7 +4,7 @@
             <img src="/assets/images/youbook.png"  class="logo mx-5" alt="logo">
         </div>
         <div class="p-4">
-            Bonjour Mr <?=$_SESSION['first_name_admin']?>
+            Bonjour Mr ___ <b><?=$_SESSION['first_name_admin']?> </b>
         </div>
         <div>
             <div class="top-navbar-right">
@@ -32,7 +32,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="/pages/login.php">
+                                    <a class="dropdown-item" href="/admin/script.php?log-out=true">
                                         <div class="d-flex align-items-center">
                                             <div class="setting-icon"><i class="bi bi-lock-fill"></i></div>
                                             <div class="setting-text ms-3"><span>Logout</span></div>
