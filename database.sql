@@ -17,7 +17,7 @@ create table if not exists manager(
                                       password varchar(255) not null
 );
 create table if not exists book(
-                                   isbn int(8) PRIMARY KEY AUTO_INCREMENT,
+                                   isbn varchar(255) PRIMARY KEY,
                                    title varchar(255) not null,
                                    n_page int(8),
                                    quantity varchar(255) not null,
@@ -25,14 +25,24 @@ create table if not exists book(
 );
 create table if not exists lend(
                                    id_reader int(8),
-                                   isbn int(8),
+                                   isbn varchar(255),
                                    lend_date datetime,
                                    return_date datetime,
                                    provided_by int(8),
                                    state int(8),
-                                   CONSTRAINT FK_LendReader FOREIGN KEY (id_reader) REFERENCES reader(id),
-                                   CONSTRAINT PK_BookLend FOREIGN KEY (isbn) REFERENCES book(isbn),
-                                   CONSTRAINT PK_ManagerLend FOREIGN KEY (provided_by) REFERENCES manager(id),
-                                   CONSTRAINT PK_StateLend FOREIGN KEY (state) REFERENCES state(id)
+                                   CONSTRAINT FK_LendReader FOREIGN KEY (id_reader) REFERENCES reader(id)ON DELETE CASCADE ON UPDATE NO ACTION ,
+                                   CONSTRAINT PK_BookLend FOREIGN KEY (isbn) REFERENCES book(isbn) ON DELETE CASCADE ON UPDATE NO ACTION,
+                                   CONSTRAINT PK_ManagerLend FOREIGN KEY (provided_by) REFERENCES manager(id) ON DELETE CASCADE ON UPDATE NO ACTION,
+                                   CONSTRAINT PK_StateLend FOREIGN KEY (state) REFERENCES state(id) ON DELETE CASCADE ON UPDATE NO ACTION
 
 );
+/*
+alter table lend
+    drop constraint PK_BookLend;
+
+ALTER TABLE lend
+    ADD CONSTRAINT PK_BookLend
+        FOREIGN KEY (isbn)
+            REFERENCES book(isbn)
+            ON DELETE CASCADE ON UPDATE NO ACTION;
+*/
