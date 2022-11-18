@@ -1,3 +1,32 @@
+function getxhr(){
+    try{
+        xhr = new XMLHttpRequest();
+    }catch (e){
+        try{
+            xhr= new ActiveXObject('mecrosoft.XMLHTTP');
+        }catch (e1){
+            alert('Error is occurred ');
+        }
+    }
+    return xhr;
+}
+function deleteBook(isbn){
+    xhr = getxhr();
+
+    xhr.open('GET', 'http://localhost:8080/admin/scripts.php?d_isbn='+isbn, true);
+    xhr.send();
+    window.location.href = "http://localhost:8080/pages/overview-book.php";
+
+}
+
+
+
+
+
+
+
+
+
 const form = document.getElementById('form');
 const first_name = document.getElementById('first_name');
 const last_name = document.getElementById('last_name');

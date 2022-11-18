@@ -8,6 +8,7 @@
     if(isset($_POST['add-admin'])) logUp();
     if(isset($_GET['log-out'])) logOut();
     if(isset($_POST['add-book'])) addBook();
+    if(isset($_GET['d_isbn'])) deleteBook();
 
 
     function getAllBook(){
@@ -23,8 +24,7 @@
             echo mysqli_error();
     }
 
-    function addBook()
-    {
+    function addBook(){
         global $conn;
 
         $isbn  = vierifyString($_POST['isbn']);
@@ -58,6 +58,18 @@
         }else{ echo "you cannot upload  a image with type : ".$fileActualExt;}
 
 
+    }
+
+    function deleteBook(){
+        global $conn;
+        $isbn = $_GET['d_isbn'];
+        $req = "DELETE FROM book where isbn = '".$isbn."'";
+        $res = mysqli_query($conn, $req);
+        if(!$res){
+            echo mysqli_error();
+            die;
+        }
+        header("Location: ../pages/overview-book.php");
     }
 
     function login(){
@@ -115,6 +127,28 @@
     function logOut(){
         session_destroy();
         header('Location: ../pages/login.php');
+    }
+
+    function editBook($isbn){
+        $GLOBALS['book'] = findBookByIsbn($isbn);
+        $_SESSION['isbn'] = $GLOBALS['book']['isbn'];
+    }
+
+    function findBookByIsbn($isbn){
+        global $conn;
+        if(!empty($isbn)){
+            $res = mysqli_query($conn, "SELECT * FROM book WHERE isbn = '$isbn'");
+            if($res){
+                return mysqli_fetch_assoc($res);
+            }
+            else {
+                $_SESSION['error'] = "error :".mysqli_error();
+                return array(null);
+            }
+        }else{
+            $_SESSION['error']= "isbn not is null";
+            return array(null);
+        }
     }
 
     function vierifyString($str): string{

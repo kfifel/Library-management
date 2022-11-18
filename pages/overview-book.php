@@ -29,7 +29,7 @@ include '../admin/script.php';
                     <li class="breadcrumb-item">livres</li>
                     <li class="breadcrumb-item breadcrumb-active">Apreçu</li>
                 </ul>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between" id="header-title">
                     <h1> List des Livres</h1>
                     <button class="btn btn-outline-light rounded-5" data-bs-toggle="modal" data-bs-target="#add-book">
                         <i class="bi bi-plus-circle"></i>
@@ -47,18 +47,25 @@ include '../admin/script.php';
                         <div class="col mb-4">
                             <div class="card">
                                 <div class="card-head text-center">
-                                    <img src="/assets/images/book/<?=$book['img']?>" class="img-fluid mb-3 rounded-2 book-photo" alt="" height="700px"/>
+                                    <img src="/assets/images/book/<?=$book['img']?>" class="img-fluid mb-3 rounded-2 book-photo" alt="photo livres"/>
                                     <h6 class="product-title"><?=$book['title']?></h6>
                                     <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
-                                        <h1><?=$book['quantity']?></h1>
-                                        <a href="javascript:;" class="btn btn-sm">
+                                        <h1 class="
+                                            <?php
+                                                if($book['quantity']<=5 && $book['quantity'] >= 0) echo 'text-danger';
+                                                if($book['quantity']<=10 && $book['quantity'] >= 6) echo 'text-warning';
+                                                if($book['quantity']>10) echo 'text-success';
+                                            ?>">
+                                            <?=$book['quantity']?>
+                                        </h1>
+                                        <a href="./overview-book.php?isbn=<?=$book['isbn']?>" class="btn btn-sm">
                                             <lord-icon
                                                     src="https://cdn.lordicon.com/wloilxuq.json"
                                                     trigger="hover"
                                                     colors="primary:#006cf1,secondary:#006cf1">
                                             </lord-icon>
                                         </a>
-                                        <a href="javascript:;" class="btn btn-sm">
+                                        <a href="/admin/script.php?d_isbn=<?=$book['isbn']?>" class="btn btn-sm">
                                             <lord-icon
                                                     src="https://cdn.lordicon.com/jmkrnisz.json"
                                                     trigger="hover"
@@ -129,8 +136,8 @@ include '../admin/script.php';
                         <textarea class="form-control" name="description" id="Description" required></textarea>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="close" onclick="closePopup()">Cancel</button>
-                        <button type="submit" name="add-book" class="btn pink text-white" id="add-book"  >Save</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="close">Cancel</button>
+                        <button type="submit" name="add-book" class="btn btn-success" id="submit"  >Save</button>
                     </div>
                 </form>
             </div>
@@ -143,3 +150,23 @@ include '../admin/script.php';
 <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
 </body>
 </html>
+
+
+<?php
+if(isset($_GET['isbn'])){
+    editBook($_GET['isbn']);
+    ?>
+    <script>
+        document.querySelector('#header-title button').click();
+        document.getElementById('headerH5').innerText= "modifier livre";
+        document.getElementById("submit").setAttribute("name", "update-book");
+        document.getElementById("submit").innerText= "Modifier";
+
+        document.getElementById('isbn').value = "<?=$GLOBALS['book']['isbn']?>";
+        document.getElementById('title').value = "<?=$GLOBALS['book']['title']?>";
+        document.getElementById('n_page').value = "<?=$GLOBALS['book']['n_page']?>";
+        document.getElementById('quantity').value = "<?=$GLOBALS['book']['quantity']?>";
+        document.getElementById('Description').value = "<?=$GLOBALS['book']['description']?>";
+    </script>
+    <?php
+}
