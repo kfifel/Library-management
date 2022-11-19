@@ -35,7 +35,7 @@
                     <div class="row row-cols-2 row-cols-md-2 row-cols-lg-4 row-cols-xl-4">
                         <div class="col">
                             <div class="text-white text-center">
-                                <div class="h1">23</div>
+                                <div class="h1"><?=countAllBooks()?></div>
                                 <i class="bi bi-book fa-5x text-primary"></i>
                                 <div class="h3">nombre des livres</div>
                             </div>
@@ -44,22 +44,22 @@
                             <div class="text-white text-center">
                                 <div class="h1">23</div>
                                 <i class="bi bi-journal-plus fa-5x text-primary"></i>
-                                <div class="h3">livres eviendront Aujourd'huit</div>
+                                <div class="h3">livres retournants Aujourd'huit</div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="text-white text-center">
-                                <div class="h1">23</div>
+                                <div class="h1"><?=countAllAdmins()?></div>
                                 <i class="bi bi-person-lines-fill fa-5x text-primary"></i>
                                 <i class="bi bi-person-gear"></i>
-                                <div class="h3">nomre d'admins</div>
+                                <div class="h3">nombre d'admins</div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="text-white text-center">
-                                <div class="h1">23</div>
+                                <div class="h1"><?=countBookLessThen10()?></div>
                                 <i class="bi bi-journal-minus fa-5x text-primary"></i>
-                                <div class="h3">nomre d'admins</div>
+                                <div class="h3">Livres ont Qte < 10 </div>
                             </div>
                         </div>
 
