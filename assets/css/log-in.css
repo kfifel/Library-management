@@ -5,13 +5,6 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
-    height: 100vh;
-    background-image: url("/assets/images/sign.png");
-    background-size:  40vw 60vh;
-    background-repeat: no-repeat;
-    background-position: 100% 100%;
-}
 .bodyAddAdmin{
     background-image: url("../images/bg1.jpg");
     background-size: cover;

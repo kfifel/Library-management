@@ -19,91 +19,53 @@ function deleteBook(isbn){
 
 }
 
-
-
-
-
-
-
-
-
 const form = document.getElementById('form');
-const first_name = document.getElementById('first_name');
-const last_name = document.getElementById('last_name');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
-const password2 = document.getElementById('password2');
 
-form.addEventListener('submit', e => {
-    e.preventDefault();
 
-    validateInputs();
-});
-
-const setError = (element, message) => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
-
+function setError(element, message){
+    const inputControl = element;
+    const errorDisplay = element.parentElement.querySelector('.error');
     errorDisplay.innerText = message;
-    inputControl.classList.add('alert-danger');
-    inputControl.classList.remove('alert-success')
+    inputControl.classList.add('border-danger');
+    inputControl.classList.remove('border-success')
 }
 
-const setSuccess = element => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
-
+function setSuccess(element){
+    const inputControl = element;
+    const errorDisplay = element.parentElement.querySelector('.error');
     errorDisplay.innerText = '';
-    inputControl.classList.add('alert-success');
-    inputControl.classList.remove('alert-danger');
-};
+    inputControl.classList.add('border-success');
+    inputControl.classList.remove('border-danger');
+}
 
-const isValidEmail = email => {
+function isValidEmail(email){
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
 
-const validateInputs = () => {
-    const firstnameValue = first_name.value.trim();
-    const lastnameValue = last_name.value.trim();
+function emailValidate() {
     const emailValue = email.value.trim();
-    const passwordValue = password.value.trim();
-    const password2Value = password2.value.trim();
 
-    if(firstnameValue === '') {
-        setError(first_name, 'first name is required');
-    } else {
-        setSuccess(first_name);
-    }
-
-    if(lastnameValue === '') {
-            setError(last_name, 'last name is required');
-        } else {
-            setSuccess(last_name);
-        }
-
-    if(emailValue === '') {
-        setError(email, 'Email is required');
+    if (emailValue === '') {
+        setError(email, 'L\'e-mail est requis');
     } else if (!isValidEmail(emailValue)) {
-        setError(email, 'Provide a valid email address');
+        setError(email, 'Donnez une adresse e-mail valide\n');
     } else {
         setSuccess(email);
     }
+}
+
+function passwordValidate() {
+    const passwordValue = password.value.trim();
 
     if(passwordValue === '') {
-        setError(password, 'Password is required');
-    } else if (passwordValue.length < 8 ) {
-        setError(password, 'Password must be at least 8 character.')
+        setError(password, 'Mot de passe requis');
+    } else if (passwordValue.length < 5 ) {
+        setError(password, 'Le mot de passe doit comporter au moins 5 caractères.')
     } else {
         setSuccess(password);
-    }
-
-    if(password2Value === '') {
-        setError(password2, 'Please confirm your password');
-    } else if (password2Value !== passwordValue) {
-        setError(password2, "Passwords doesn't match");
-    } else {
-        setSuccess(password2);
     }
 
 };
