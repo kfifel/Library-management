@@ -2,16 +2,17 @@
     include('database/dbConnexion.php');
 
     $books = array();
-    getAllBook();
+    getAllBooks();
 
     if(isset($_POST['log-in']))  login();
     if(isset($_POST['add-admin'])) logUp();
     if(isset($_GET['log-out'])) logOut();
-    if(isset($_POST['add-book'])) addBook();
+    if(isset($_POST['add-book'])) createBook();
+    if(isset($_POST['update-book'])) updateBook();
     if(isset($_GET['d_isbn'])) deleteBook();
 
 
-    function getAllBook(){
+    function getAllBooks():void{
         global $conn;
         global $books;
 
@@ -21,62 +22,67 @@
             while($row = mysqli_fetch_assoc($res))
                 $books[] = $row;
         }else
-            echo mysqli_error();
+            echo mysqli_error($conn);
     }
 
-    function addBook(){
+    function createBook():void{
         global $conn;
-
-        $isbn  = vierifyString($_POST['isbn']);
-        $title = vierifyString($_POST['title']);
-        $n_page = $_POST['n_page'];
-        $quantity = $_POST['quantity'];
-        $description = vierifyString($_POST['description']);
-
-
-        $img=$_FILES['img']['name'];
-        $fileTmpName=$_FILES['img']['tmp_name'];
-        $fileError=$_FILES['img']['error'];
-        $fileExt=explode('.', $img);
-        $fileActualExt=strtolower(end($fileExt));
-        $allowed=array('jpg','png','jpeg');
-        if (in_array($fileActualExt, $allowed)) {
-            if ($fileError===0) {
-                $fileNameNew=uniqid('img',true).".".$fileActualExt;
-                $fileDestination='../assets/images/book/'.$fileNameNew;
-                $req = "INSERT INTO book 
+        $book = getFormData();
+        $req = "INSERT INTO book 
                     (isbn, title, n_page, quantity, description, img) value 
-                    ('$isbn', '$title', $n_page, $quantity, '$description', '$fileNameNew')";
-                $res = mysqli_query($conn, $req);
-                if($res) {
-                    move_uploaded_file($fileTmpName, $fileDestination);
-                    header("Location: ../pages/overview-book.php");
-                }
-                else
-                    $_SESSION['error'] = "Error  :".mysqli_error($conn);
-            }else{ echo "there was an error in the importing of your image plise try again ";}
-        }else{ echo "you cannot upload  a image with type : ".$fileActualExt;}
-
+                    (?, ?, ?, ?, ?, ?)";
+        $res = mysqli_prepare($conn, $req);
+        mysqli_stmt_bind_param($res, "ssiiss",  ...$book);
+        $res = mysqli_stmt_execute($res);
+        if($res) {
+            $_SESSION['message'] = "Success : bien enregistrer";
+            header("Location: ../pages/overview-book.php");
+        }
+        else
+            $_SESSION['error'] = "Error  :".mysqli_error($conn);
+        header("Location: ../pages/overview-book.php");
 
     }
 
-    function deleteBook(){
+    function updateBook():void{
+        global $conn;
+        $book = getFormData();
+        if( !empty($book['photo'] )){
+            $req = "UPDATE book SET `isbn` = ?, `title` = ?, `n_page` = ?, `quantity` = ?, `description` = ?, `img` = ?
+               WHERE `isbn` = '".$_SESSION['isbn']."'";
+            $res = $conn->prepare($req);
+            $res->bind_param("ssiiss", $book['isbn'], $book['title'], $book['n_page'], $book['quantity'], $book['description'], $book['photo']);
+        }else{
+            $req = "UPDATE book SET `isbn` = ?, `title` = ?, `n_page` = ?, `quantity` = ?, `description` = ?
+               WHERE `isbn` = '".$_SESSION['isbn']."'";
+            $res = $conn->prepare($req);
+            $res->bind_param("ssiis",$book['isbn'], $book['title'], $book['n_page'], $book['quantity'], $book['description']);
+        }
+        if($res->execute())
+            $_SESSION['message'] = "La modification a été enregistrée!";
+        else
+            $_SESSION['error'] = "Erreur lors de l'enregistrement!!!";
+        header("Location: /pages/overview-book.php");
+
+    }
+    
+    function deleteBook():void{
         global $conn;
         $isbn = $_GET['d_isbn'];
         $req = "DELETE FROM book where isbn = '".$isbn."'";
         $res = mysqli_query($conn, $req);
         if(!$res){
-            echo mysqli_error();
+            echo mysqli_error($conn);
             die;
         }
         header("Location: ../pages/overview-book.php");
     }
 
-    function login(){
+    function login():void{
         global $conn;
 
-        $email = vierifyString($_POST['email']);
-        $password = vierifyString($_POST['password']);
+        $email = verifyString($_POST['email']);
+        $password = verifyString($_POST['password']);
 
         $query = "SELECT * FROM manager WHERE email = '$email' and password='" . hash('sha256', $password) . "'";
         $result = mysqli_query($conn, $query);
@@ -95,14 +101,14 @@
         }
     }
 
-    function logUp(){
+    function logUp():void{
         if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['first_name']) && !empty($_POST['last_name'])){
             global $conn;
-            $email = vierifyString($_POST['email']);
-            $password = vierifyString($_POST['password']);
-            $password2 = vierifyString($_POST['password2']);
-            $first_name = vierifyString($_POST['first_name']);
-            $last_name = vierifyString($_POST['last_name']);
+            $email = verifyString($_POST['email']);
+            $password = verifyString($_POST['password']);
+            $password2 = verifyString($_POST['password2']);
+            $first_name = verifyString($_POST['first_name']);
+            $last_name = verifyString($_POST['last_name']);
             if($password != $password2){
                 $_SESSION['message'] = "les mot de passes pas similaire ";
                 header("Location:  ../../pages/add-admin.php");
@@ -114,7 +120,7 @@
                 header('Location: /index.php');
             }
             else{
-                $_SESSION['message'] = "erreur d'enregistrement :".mysqli_error();
+                $_SESSION['message'] = "erreur d'enregistrement :".mysqli_error($conn);
                 header('Location: ../../pages/add-admin.php');
             }
         }else{
@@ -124,17 +130,53 @@
 
     }
 
-    function logOut(){
+    function logOut():void{
         session_destroy();
         header('Location: ../pages/login.php');
     }
 
-    function editBook($isbn){
+    function getFormData():array{
+        $isbn  = verifyString($_POST['isbn']);
+        $title = verifyString($_POST['title']);
+        $n_page = $_POST['n_page'];
+        $quantity = $_POST['quantity'];
+        $description = verifyString($_POST['description']);
+        $fileNameNew="";
+
+        $img=$_FILES['img']['name']; // b2.jpg
+        $fileTmpName=$_FILES['img']['tmp_name'];
+        $fileError=$_FILES['img']['error'];
+        $fileExt=explode('.', $img); //array ['b2' 'jpg']
+        $fileActualExt=strtolower(end($fileExt));
+        $allowed=array('jpg','png','jpeg');
+        if (in_array($fileActualExt, $allowed)) {
+            if ($fileError===0) {
+                $fileNameNew=uniqid('img',true).".".$fileActualExt;
+                $fileDestination='../assets/images/book/'.$fileNameNew;
+                move_uploaded_file($fileTmpName, $fileDestination);
+            }else{
+                $_SESSION['error'] = "there was an error in the importing of your image, try again!!";
+                header("Location: /pages/overview-book.php");
+            }
+        }else{
+            $_SESSION['error'] = "Extension $fileActualExt: is not allowed here";
+            header("Location: /pages/overview-book.php");
+        }
+        return array(
+            'isbn'=>$isbn,
+            'title'=>$title,
+            'n_page'=>$n_page,
+            'quantity'=>$quantity,
+            'description'=>$description,
+            'photo'=>$fileNameNew);
+    }
+
+    function editBook($isbn):void{
         $GLOBALS['book'] = findBookByIsbn($isbn);
         $_SESSION['isbn'] = $GLOBALS['book']['isbn'];
     }
 
-    function findBookByIsbn($isbn){
+    function findBookByIsbn($isbn):array{
         global $conn;
         if(!empty($isbn)){
             $res = mysqli_query($conn, "SELECT * FROM book WHERE isbn = '$isbn'");
@@ -142,7 +184,7 @@
                 return mysqli_fetch_assoc($res);
             }
             else {
-                $_SESSION['error'] = "error :".mysqli_error();
+                $_SESSION['error'] = "error :".mysqli_error($conn);
                 return array(null);
             }
         }else{
@@ -151,8 +193,35 @@
         }
     }
 
-    function vierifyString($str): string{
+    function countAllBooks():int{
         global $conn;
-        $str = stripslashes($str);
+        $req = "SELECT count(isbn) as size FROM book";
+
+        $res = mysqli_query($conn, $req);
+        $res = mysqli_fetch_assoc($res);
+        return $res['size'];
+    }
+
+    function countAllAdmins():int{
+    global $conn;
+    $req = "SELECT count(id) as size FROM manager";
+
+    $res = mysqli_query($conn, $req);
+    $res = mysqli_fetch_assoc($res);
+    return $res['size'];
+}
+
+    function countBookLessThen10():int{
+        global $conn;
+        $req = "SELECT count(m.isbn) as bookNeeded FROM book m WHERE m.quantity < 10";
+
+        $res = mysqli_query($conn, $req);
+        $res = mysqli_fetch_assoc($res);
+        return $res['bookNeeded'];
+    }
+
+    function verifyString($str): string{
+        global $conn;
+        $str = stripslashes(trim($str));
         return mysqli_real_escape_string($conn, $str);
     }
