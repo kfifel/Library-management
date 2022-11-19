@@ -1,4 +1,4 @@
- <div class="row justify-items-center justify-content-center gap-3">
+ <div class="row justify-items-center gap-3 text-center">
         <a href="../index.php">
             <lord-icon
                     src="https://cdn.lordicon.com/osuxyevn.json"
@@ -17,6 +17,6 @@
             </lord-icon>
         </a>
         <a href="../pages/add-admins.php">
-            <i class="bi bi-person-plus fa-4x text-white mx-2"></i>
+            <i class="bi bi-person-plus fa-3x text-white mx-2"></i>
         </a>
 </div>

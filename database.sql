@@ -26,14 +26,14 @@ create table if not exists book(
 create table if not exists lend(
                                    id_reader int(8),
                                    isbn varchar(255),
-                                   lend_date datetime,
-                                   return_date datetime,
+                                   lend_date date,
+                                   return_date date,
                                    provided_by int(8),
                                    state int(8),
                                    CONSTRAINT FK_LendReader FOREIGN KEY (id_reader) REFERENCES reader(id)ON DELETE CASCADE ON UPDATE NO ACTION ,
-                                   CONSTRAINT PK_BookLend FOREIGN KEY (isbn) REFERENCES book(isbn) ON DELETE CASCADE ON UPDATE NO ACTION,
-                                   CONSTRAINT PK_ManagerLend FOREIGN KEY (provided_by) REFERENCES manager(id) ON DELETE CASCADE ON UPDATE NO ACTION,
-                                   CONSTRAINT PK_StateLend FOREIGN KEY (state) REFERENCES state(id) ON DELETE CASCADE ON UPDATE NO ACTION
+                                   CONSTRAINT FK_BookLend FOREIGN KEY (isbn) REFERENCES book(isbn) ON DELETE CASCADE ON UPDATE NO ACTION,
+                                   CONSTRAINT FK_ManagerLend FOREIGN KEY (provided_by) REFERENCES manager(id) ON DELETE CASCADE ON UPDATE NO ACTION,
+                                   CONSTRAINT FK_StateLend FOREIGN KEY (state) REFERENCES state(id) ON DELETE CASCADE ON UPDATE NO ACTION
 
 );
 /*

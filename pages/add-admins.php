@@ -28,20 +28,20 @@ if(!isset($_SESSION['id_admin'])){
                     <form action="/admin/script.php" method="post" class="d-grid gap-5">
                         <div class="row">
                             <div class="col-6">
-                                <input type="text" name="first_name" placeholder="Prénom" class="form-control">
+                                <input type="text" name="first_name" id="first_name" placeholder="Prénom" class="form-control">
                             </div>
                             <div class="col-6">
-                                <input type="text" name="last_name" placeholder="Nom" class="form-control">
+                                <input type="text" name="last_name" id="last_name" placeholder="Nom" class="form-control">
                             </div>
                         </div>
                         <div>
-                            <input type="email" name="email" placeholder="Email" class="form-control">
+                            <input type="email" name="email" id="email" placeholder="Email" onkeyup="emailValidate()" class="form-control">
                         </div>
                         <div>
-                            <input type="password" name="password" placeholder="mot de passe" class="form-control">
+                            <input type="password" name="password" id="password" placeholder="mot de passe" onkeyup="passwordValidate()" class="form-control">
                         </div>
                         <div>
-                            <input type="password" name="password2" placeholder=" mot de passe" class="form-control">
+                            <input type="password" name="password2" id="password2" placeholder="mot de passe" class="form-control">
                         </div>
                         <div class="d-flex justify-content-between">
                             <input type="submit" value="Connexion" name="add-admin" class="btn btn-primary">
@@ -52,12 +52,18 @@ if(!isset($_SESSION['id_admin'])){
             </div>
         </div>
         <div class="text-center d-grid justify-items-center  title">
-            <h1 class=" my-5"><span class="text-muted">YOU</span><span class="text-primary">BOOK</span></h1>
+            <a href="/index.php" class="text-decoration-none">
+                <h1 class=" my-5">
+                    <span class="text-muted">YOU</span>
+                    <span class="text-primary">BOOK</span>
+                </h1>
+            </a>
             <div class="mt-5">
                 <img src="../assets/images/sigup.png" id="logup" alt="add admins up">
             </div>
         </div>
     </div>
 </main>
+<script src="../assets/js/main.js"></script>
 </body>
 </html>
