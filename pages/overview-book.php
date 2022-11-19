@@ -37,7 +37,25 @@ include '../admin/script.php';
                     </button>
                 </div>
             </div>
-            <div class="card-body p-5">
+            <div class="px-5">
+                <?php if(!empty($_SESSION['message'])):?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?=$_SESSION['message']?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <?php
+                    endif;
+                    if(!empty($_SESSION['error'])): ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?=$_SESSION['error']?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <?php endif;
+                unset($_SESSION['message']);
+                unset($_SESSION['error']);
+                ?>
+            </div>
+            <div class="card-body px-5">
                 <div class="">
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-5">
                         <?php
@@ -148,6 +166,8 @@ include '../admin/script.php';
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
 
