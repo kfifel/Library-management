@@ -27,12 +27,16 @@
                 <div class="text-center mt-5">
                     <form action="/admin/script.php" method="post" class="d-grid gap-5" id="form">
                             <div>
-                                <input type="email" name="email" placeholder="Email" id="email" class="form-control border-5" onkeyup="emailValidate()">
-                                <label for="email" class="text-danger error"></label>
+                                <input type="email" name="email" placeholder="Email" id="email" class="form-control" onkeyup="emailValidate()">
+                                <div class="valid-feedback">
+                                </div>
+                                <div class="invalid-feedback">
+                                </div>
                             </div>
                             <div>
-                                <input type="password" name="password" id="password" placeholder="mot de passe" class="form-control border-5" onkeyup="passwordValidate()">
-                                <label for="password" class="text-danger error"></label>
+                                <input type="password" name="password" id="password" placeholder="mot de passe" class="form-control" onkeyup="passwordValidate()">
+                                <div class="invalid-feedback">
+                                </div>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <input type="submit" value="Connexion" name="log-in" class="btn btn-primary">
