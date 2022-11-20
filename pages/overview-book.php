@@ -125,7 +125,7 @@ include '../admin/script.php';
                 <div id="alertAdd">
 
                 </div>
-                <form id="form" action="../admin/script.php" method="post" enctype="multipart/form-data">
+                <form id="form" class="" action="../admin/script.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="isbn" class="col-form-label">isbn</label>
                         <input type="text" id="isbn" name="isbn" class="form-control">
@@ -134,19 +134,20 @@ include '../admin/script.php';
                         <label for="title" class="form-label">titre:</label>
                         <input type="text" class="form-control" name="title" id="title"  placeholder="title" required>
                         <div class="valid-feedback">
-                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="n_page" class="col-form-label">nombre des pages</label>
+                        <label for="n_page" class="col-form-label">nombre des pages:</label>
                         <input type="number" id="n_page" name="n_page" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="quantity" class="col-form-label">quantité</label>
+                        <label for="quantity" class="col-form-label">quantité:</label>
                         <input type="number" id="quantity" name="quantity" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="img" class="col-form-label">image</label>
+                        <label for="img" class="col-form-label">image:</label>
                         <input type="file" id="img" name="img" class="form-control">
                     </div>
                     <div class="form-group">

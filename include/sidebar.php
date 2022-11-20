@@ -4,7 +4,7 @@
                     src="https://cdn.lordicon.com/osuxyevn.json"
                     trigger="hover"
                     colors="primary:#FFFFFF"
-                    class="logo">
+                    class="logoicon">
             </lord-icon>
         </a>
         <a href="../pages/overview-book.php">
@@ -12,11 +12,11 @@
                     src="https://cdn.lordicon.com/kipaqhoz.json"
                     trigger="morph"
                     colors="primary:#FFFFFF"
-                    class="logo"
+                    class="logoicon"
             >
             </lord-icon>
         </a>
         <a href="../pages/add-admins.php">
-            <i class="bi bi-person-plus fa-3x text-white mx-2"></i>
+            <i class="bi bi-person-plus fa-2x text-white mx-2"></i>
         </a>
 </div>

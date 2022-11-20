@@ -28,6 +28,10 @@
     function createBook():void{
         global $conn;
         $book = getFormData();
+        if(!is_numeric($book['quantity'] ) || !is_numeric($book['n_page'])){
+            $_SESSION['error'] = "quantitie et nombre des pages doit être des nombres";
+            header("Location: ../pages/overview-book.php");
+        }
         $req = "INSERT INTO book 
                     (isbn, title, n_page, quantity, description, img) value 
                     (?, ?, ?, ?, ?, ?)";
@@ -35,11 +39,11 @@
         mysqli_stmt_bind_param($res, "ssiiss",  ...$book);
         $res = mysqli_stmt_execute($res);
         if($res) {
-            $_SESSION['message'] = "Success : bien enregistrer";
+            $_SESSION['message'] = "bien enregistrer";
             header("Location: ../pages/overview-book.php");
         }
         else
-            $_SESSION['error'] = "Error  :".mysqli_error($conn);
+            $_SESSION['error'] = mysqli_error($conn);
         header("Location: ../pages/overview-book.php");
 
     }
@@ -159,7 +163,7 @@
                 header("Location: /pages/overview-book.php");
             }
         }else{
-            $_SESSION['error'] = "Extension $fileActualExt: is not allowed here";
+            if($fileActualExt != '') $_SESSION['error'] = "Extension $fileActualExt: is not allowed here";
             header("Location: /pages/overview-book.php");
         }
         return array(
