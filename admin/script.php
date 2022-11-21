@@ -224,6 +224,24 @@
         return $res['bookNeeded'];
     }
 
+    function countBookLends():int{
+        global $conn;
+        $req = "SELECT count(id_reader) as id_reader FROM lend";
+
+        $res = mysqli_query($conn, $req);
+        $res = mysqli_fetch_assoc($res);
+        return $res['id_reader'];
+    }
+
+    function countBookReturnedBackToday():int{
+        global $conn;
+        $req = "SELECT count(id_reader) as id_reader FROM lend WHERE return_date = '".date('Y-m-d')."'";
+
+        $res = mysqli_query($conn, $req);
+        $res = mysqli_fetch_assoc($res);
+        return $res['id_reader'];
+    }
+
     function verifyString($str): string{
         global $conn;
         $str = stripslashes(trim($str));

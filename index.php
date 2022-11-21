@@ -42,7 +42,7 @@
                         </div>
                         <div class="col">
                             <div class="text-white text-center">
-                                <div class="h1">23</div>
+                                <div class="h1"><?=countBookReturnedBackToday()?></div>
                                 <i class="bi bi-journal-plus fa-5x text-primary"></i>
                                 <div class="h3">livres retournants Aujourd'huit</div>
                             </div>
@@ -57,9 +57,16 @@
                         </div>
                         <div class="col">
                             <div class="text-white text-center">
-                                <div class="h1"><?=countBookLessThen10()?></div>
+                                <div class="h1"><?=countBookReturnedBackToday()?></div>
                                 <i class="bi bi-journal-minus fa-5x text-primary"></i>
                                 <div class="h3">Livres ont Qte < 10 </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="text-white text-center">
+                                <div class="h1"><?=countBookLends()?></div>
+                                <i class="bi bi-journal-minus fa-5x text-primary"></i>
+                                <div class="h3">Livres sortant</div>
                             </div>
                         </div>
 
