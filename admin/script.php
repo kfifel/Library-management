@@ -4,12 +4,13 @@
     $books = array();
     getAllBooks();
 
-    if(isset($_POST['log-in']))  login();
-    if(isset($_POST['add-admin'])) logUp();
-    if(isset($_GET['log-out'])) logOut();
-    if(isset($_POST['add-book'])) createBook();
-    if(isset($_POST['update-book'])) updateBook();
-    if(isset($_GET['d_isbn'])) deleteBook();
+    if(isset($_POST['log-in']))         login();
+    if(isset($_GET['log-out']))         logOut();
+    if(isset($_POST['add-book']))       createBook();
+    if(isset($_POST['update-book']))    updateBook();
+    if(isset($_GET['d_isbn']))          deleteBook();
+    if(isset($_POST['add-admin']))      createAdmin();
+    if(isset($_POST['modifier-admin'])) updateAdmin();
 
 
     function getAllBooks():void{
@@ -105,7 +106,7 @@
         }
     }
 
-    function logUp():void{
+    function createAdmin():void{
         if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['first_name']) && !empty($_POST['last_name'])){
             global $conn;
             $email = verifyString($_POST['email']);
@@ -114,24 +115,68 @@
             $first_name = verifyString($_POST['first_name']);
             $last_name = verifyString($_POST['last_name']);
             if($password != $password2){
-                $_SESSION['message'] = "les mot de passes pas similaire ";
-                header("Location:  ../../pages/add-admin.php");
-            }
-            $req = "INSERT INTO manager VALUE (null, '$first_name', '$last_name', '$email','".hash('sha256', $password)."')";
-            $res = mysqli_query($conn, $req);
-            if($res){
-                $_SESSION['message'] = "bien enregistrer ";
-                header('Location: /index.php');
-            }
-            else{
-                $_SESSION['message'] = "erreur d'enregistrement :".mysqli_error($conn);
-                header('Location: ../../pages/add-admin.php');
+                $_SESSION['error'] = "les mot de passes n'est pas similaire ";
+                $_SESSION['emailNv'] = $email;
+                $_SESSION['first_name'] = $first_name;
+                $_SESSION['last_name'] = $last_name;
+                header("Location:  ../../pages/add-admins.php");
+            }else{
+                $req = "INSERT INTO manager VALUE (null, '$first_name', '$last_name', '$email','".hash('sha256', $password)."')";
+                $res = mysqli_query($conn, $req);
+                if($res){
+                    $_SESSION['message'] = "bien enregistrer ";
+                }
+                else{
+                    $_SESSION['error'] = "erreur d'enregistrement :".mysqli_error($conn);
+                }
             }
         }else{
-            $_SESSION['message'] = "il faut remplir touts les champs ";
-            header('Location: ../../pages/add-admin.php');
+            $_SESSION['error'] = "il faut remplir touts les champs ";
         }
+        header('Location: ../../pages/add-admins.php');
 
+    }
+
+    function updateAdmin():void
+    {
+        global $conn;
+        if(isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['email']) ){
+            $first_name = verifyString( $_POST['first_name'] );
+            $last_name = verifyString( $_POST['last_name'] );
+            $email = verifyString( $_POST['email'] );
+            $password = verifyString( $_POST['password'] );
+            $password2 = verifyString( $_POST['password2'] );
+            $id_admin = $_SESSION['id_admin'];
+            if($password === ''){
+                $req = "UPDATE manager set first_name = '$first_name', last_name = '$last_name', email = '$email'
+                where id = $id_admin";
+                $res = mysqli_query($conn, $req);
+                if($res){
+                    $_SESSION['massage'] = "votre informations est bien enregistrer";
+                    $_SESSION['first_name_admin'] = $first_name;
+                    $_SESSION['last_name_admin']  = $last_name;
+                    $_SESSION['email']  = $email;
+                }
+                else
+                    $_SESSION['error'] = " some thing's was wrong :(";
+            }else{
+                if($password != $password2){
+                    $_SESSION['error'] = "mot de passes n'est pas similaire ";
+                }else{
+                    $req = "UPDATE manager set first_name = '$first_name', last_name = '$last_name', email = '$email', password = '$password'
+                    where id = $id_admin";
+                    $res = mysqli_query($conn, $req);
+                    if($res)
+                        $_SESSION['massage'] = " Votre informations est bien enregistrer";
+                    else
+                        $_SESSION['error'] = " some thing's was wrong :(";
+
+                }
+            }
+        }else{
+            $_SESSION['error'] = " Essayez de remplir touts les chaps  :(";
+        }
+    header("Location: ../pages/settings.php");
     }
 
     function logOut():void{
