@@ -36,9 +36,9 @@
         $req = "INSERT INTO book 
                     (isbn, title, n_page, quantity, description, img) value 
                     (?, ?, ?, ?, ?, ?)";
-        $res = mysqli_prepare($conn, $req);
-        mysqli_stmt_bind_param($res, "ssiiss",  ...$book);
-        $res = mysqli_stmt_execute($res);
+        $res = $conn->prepare($req);
+        $res->bind_param("ssiiss", $book['isbn'], $book['title'], $book['n_page'], $book['quantity'], $book['description'], $book['photo']);
+        $res = $res->execute();
         if($res) {
             $_SESSION['message'] = "bien enregistrer";
             header("Location: ../pages/overview-book.php");
@@ -89,21 +89,27 @@
         $email = verifyString($_POST['email']);
         $password = verifyString($_POST['password']);
 
-        $query = "SELECT * FROM manager WHERE email = '$email' and password='" . hash('sha256', $password) . "'";
-        $result = mysqli_query($conn, $query);
-        $rows = mysqli_fetch_assoc($result);
+        $req1 = "SELECT * FROM manager WHERE email = '$email'";
+        $result1 = mysqli_query($conn, $req1);
 
-        if ( mysqli_num_rows($result) > 0) {
-            $_SESSION['id_admin']  = $rows['id'];
-            $_SESSION['first_name_admin'] = $rows['first_name'];
-            $_SESSION['last_name_admin']  = $rows['last_name'];
-            $_SESSION['email']  = $rows['email'];
-            header("Location: /index.php");
-        } else {
-            $message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
-            echo $message;
-            header("Location: /pages/login.php");
+        if(mysqli_num_rows($result1) === 0){
+            $_SESSION['error'] = "Email n'existe pas!!";
+        }else{
+            $req2 = "SELECT * FROM manager WHERE email = '$email' and password='" . hash('sha256', $password) . "'";
+            $result2 = mysqli_query($conn, $req2);
+            $rows2 = mysqli_fetch_assoc($result2);
+
+            if ( mysqli_num_rows($result2) > 0) {
+                $_SESSION['id_admin']  = $rows2['id'];
+                $_SESSION['first_name_admin'] = $rows2['first_name'];
+                $_SESSION['last_name_admin']  = $rows2['last_name'];
+                $_SESSION['email']  = $rows2['email'];
+                header("Location: /index.php");
+            } else {
+                $_SESSION['error'] = "mot de passe est incorrect.";
+            }
         }
+        header("Location: /pages/login.php");
     }
 
     function createAdmin():void{
@@ -140,10 +146,11 @@
     function updateAdmin():void
     {
         global $conn;
-        if(isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['email']) ){
+        if(!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST['email']) ){
             $first_name = verifyString( $_POST['first_name'] );
             $last_name = verifyString( $_POST['last_name'] );
             $email = verifyString( $_POST['email'] );
+            $currentPassword = verifyString( $_POST['currentPassword'] );
             $password = verifyString( $_POST['password'] );
             $password2 = verifyString( $_POST['password2'] );
             $id_admin = $_SESSION['id_admin'];
@@ -152,7 +159,7 @@
                 where id = $id_admin";
                 $res = mysqli_query($conn, $req);
                 if($res){
-                    $_SESSION['massage'] = "votre informations est bien enregistrer";
+                    $_SESSION['message'] = "votre informations est bien enregistrer";
                     $_SESSION['first_name_admin'] = $first_name;
                     $_SESSION['last_name_admin']  = $last_name;
                     $_SESSION['email']  = $email;
@@ -160,17 +167,21 @@
                 else
                     $_SESSION['error'] = " some thing's was wrong :(";
             }else{
-                if($password != $password2){
-                    $_SESSION['error'] = "mot de passes n'est pas similaire ";
+                if($password === $password2){
+                    if(verifyPasswordAdmin(hash("sha256", $currentPassword))){
+                        $password = hash('sha256', $password);
+                        $req = "UPDATE manager set first_name = '$first_name', last_name = '$last_name', email = '$email', password = '$password'
+                        where id = $id_admin";
+                        $res = mysqli_query($conn, $req);
+                        if($res)
+                            $_SESSION['message'] = " Votre informations est bien enregistrer";
+                        else
+                            $_SESSION['error'] = " some thing's was wrong :(";
+                    }else{
+                        $_SESSION['error'] = " current password is wrong :(";
+                    }
                 }else{
-                    $req = "UPDATE manager set first_name = '$first_name', last_name = '$last_name', email = '$email', password = '$password'
-                    where id = $id_admin";
-                    $res = mysqli_query($conn, $req);
-                    if($res)
-                        $_SESSION['massage'] = " Votre informations est bien enregistrer";
-                    else
-                        $_SESSION['error'] = " some thing's was wrong :(";
-
+                    $_SESSION['error'] = "mot de passes n'est pas similaire ";
                 }
             }
         }else{
@@ -285,6 +296,12 @@
         $res = mysqli_query($conn, $req);
         $res = mysqli_fetch_assoc($res);
         return $res['id_reader'];
+    }
+
+    function verifyPasswordAdmin($password):int{
+        global $conn;
+        $res = mysqli_query($conn, "SELECT id FROM manager WHERE password = '$password' AND id = ".$_SESSION['id_admin']);
+        return mysqli_num_rows($res);
     }
 
     function verifyString($str): string{
