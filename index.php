@@ -23,7 +23,7 @@
         <div class="mt-10 col-1" id="side_bar">
             <?php include './include/sidebar.php' ?>
         </div>
-        <div class=" col-11 ml-8 mt-10">
+        <div class=" col-11 mt-10">
             <div class="card-header p-3 text-white">
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item">library</li>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="col">
                             <div class="text-white text-center">
-                                <div class="h1"><?=countBookReturnedBackToday()?></div>
+                                <div class="h1"><?=countBookLessThen10()?></div>
                                 <i class="bi bi-journal-minus fa-5x text-primary"></i>
                                 <div class="h3">Livres ont Qte < 10 </div>
                             </div>

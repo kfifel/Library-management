@@ -1,7 +1,6 @@
 <header>
     <nav class=" navbar-expand d-flex justify-content-between justify-items-center text-white">
         <div>
-            <img src="/assets/images/youbook.png"  class="logo mx-5" alt="logo">
         </div>
         <div class="p-4">
             Bonjour Mr ___ <b><?=$_SESSION['first_name_admin']?> </b>
@@ -24,7 +23,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" >
                                 <li>
-                                    <a class="dropdown-item" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" href="#" (click)="$event.preventDefault()">
+                                    <a class="dropdown-item" type="button" href="/pages/settings.php">
                                         <div class="d-flex align-items-center">
                                             <div class="setting-icon"><i class="bi bi-gear-fill"></i></div>
                                             <div class="setting-text ms-3"><span>Setting</span></div>

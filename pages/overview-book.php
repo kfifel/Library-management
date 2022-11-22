@@ -20,7 +20,7 @@ include '../admin/script.php';
 <?php  include '../include/header.php'; ?>
 <main>
     <div class="main-container d-flex">
-        <div class="" id="side_bar">
+        <div class="mt-10 col-1" id="side_bar">
             <?php include '../include/sidebar.php' ?>
         </div>
         <div class=" col-11 ml-8 mt-10">

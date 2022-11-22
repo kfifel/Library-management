@@ -1,4 +1,6 @@
- <div class="row justify-items-center gap-3 text-center">
+ <div>
+     <img src="/assets/images/youbook.png"  class="logo mx-5" alt="logo">
+     <div class="row justify-items-center gap-3 text-center my-5">
         <a href="../index.php">
             <lord-icon
                     src="https://cdn.lordicon.com/osuxyevn.json"
@@ -19,4 +21,5 @@
         <a href="../pages/add-admins.php">
             <i class="bi bi-person-plus fa-2x text-white mx-2"></i>
         </a>
-</div>
+    </div>
+ </div>
