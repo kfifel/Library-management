@@ -82,6 +82,10 @@
                                 <input type="email" name="email" id="email" value="<?=$admin['email'];?>"  placeholder="Email" onkeyup="emailValidate()" class="form-control">
                             </div>
                             <div>
+                                <label for="currentPassword" class="text-white">mot de passe acctueil: </label>
+                                <input type="password" name="currentPassword" id="currentPassword" placeholder="mot de passe acctueil" class="form-control">
+                            </div>
+                            <div>
                                 <label for="password" class="text-white">mot de passe: </label>
                                 <input type="password" name="password" id="password" placeholder="mot de passe" onkeyup="passwordValidate()" class="form-control">
                             </div>
