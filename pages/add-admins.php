@@ -35,8 +35,8 @@ if(!isset($_SESSION['id_admin'])){
                     <h1> ajouter admin</h1>
                 </div>
             </div>
-            <div class="card-body px-5 d-flex justify-content-center">
-                <div class="col-7">
+            <div class="card-body px-3 d-flex justify-content-center">
+                <div class="col-sm-12 col-md-9 col-lg-7">
                     <div class="">
                         <?php if(!empty($_SESSION['message'])):?>
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -57,23 +57,28 @@ if(!isset($_SESSION['id_admin'])){
                         ?>
                     </div>
                     <form action="/admin/script.php" method="post">
-                        <div class="d-grid gap-5">
+                        <div class="d-grid gap-2">
                             <div class="row">
                                 <div class="col-6">
+                                    <label for="first_name" class="text-white">Prénom:</label>
                                     <input type="text" name="first_name" id="first_name" value="<?=@$_SESSION['first_name']; unset($_SESSION['first_name']);?>" placeholder="Prénom" class="form-control">
                                 </div>
                                 <div class="col-6">
+                                    <label for="last_name" class="text-white">Nom:</label>
                                     <input type="text" name="last_name" id="last_name" value="<?=@$_SESSION['last_name']; unset($_SESSION['last_name']);?>"  placeholder="Nom" class="form-control">
                                 </div>
                             </div>
                             <div>
+                                <label for="email" class="text-white">Email:</label>
                                 <input type="email" name="email" id="email" value="<?=@$_SESSION['emailNv']; unset($_SESSION['emailNv']);?>"  placeholder="Email" onkeyup="emailValidate()" class="form-control">
                             </div>
                             <div>
+                                <label for="password" class="text-white">mot de passe:</label>
                                 <input type="password" name="password" id="password" placeholder="mot de passe" onkeyup="passwordValidate()" class="form-control">
                             </div>
                             <div>
-                                <input type="password" name="password2" id="password2" placeholder="mot de passe" class="form-control">
+                                <label for="password2" class="text-white">Confirmer le mot de passe:</label>
+                                <input type="password" name="password2" id="password2" placeholder="Confirmer le mot de passe" class="form-control">
                             </div>
                         </div>
                         <div class="d-flex justify-content-between my-4">

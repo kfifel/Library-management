@@ -19,8 +19,8 @@
 </head>
 <body>
 <main>
-    <div class="d-flex ">
-        <div  class="card col-5 p-3 py-2 align-content-center rounded-4" id="h-100">
+    <div class="d-sm-flex">
+        <div  class="card col-10 col-sm-5 p-3 py-2 align-content-center rounded-4" id="h-100">
             <div class="card-body row justify-content-center">
                 <h1 class="text-center">
                     <span>Log</span>
@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="text-center d-grid justify-items-center  title">
-            <div class="mt-5">
+            <div class="mt-5 d-none d-sm-block">
                 <h1 class=" my-5"><span class="text-muted">YOU</span><span class="text-primary">BOOK</span></h1>
                 <img src="../assets/images/sign.png" id="logup" alt="add admins up">
             </div>

@@ -31,7 +31,7 @@ include '../admin/script.php';
                 </ul>
                 <div class="d-flex justify-content-between" id="header-title">
                     <h1> List des Livres</h1>
-                    <button class="btn btn-outline-light rounded-5" data-bs-toggle="modal" data-bs-target="#add-book">
+                    <button class="btn btn-outline-light rounded-5" onclick="addBookForm()" data-bs-toggle="modal" data-bs-target="#add-book">
                         <i class="bi bi-plus-circle"></i>
                         Ajouter livres
                     </button>
@@ -63,9 +63,11 @@ include '../admin/script.php';
                         foreach ($books as $book){
                         ?>
                         <div class="col mb-4">
-                            <div class="card">
+                            <div class="card" style="height: 70vh;">
                                 <div class="card-head text-center">
-                                    <img src="/assets/images/book/<?=$book['img']?>" class="img-fluid mb-3 rounded-2 book-photo" alt="photo livres"/>
+                                    <section class="d-flex justify-content-around flex-wrap gap-3 overflow-hidden my-3">
+                                        <img src="/assets/images/book/<?=$book['img']?>" class="img-fluid mb-3 rounded-2 book-photo" alt="photo livres"/>
+                                    </section>
                                     <h6 class="product-title"><?=$book['title']?></h6>
                                     <div class="d-flex align-items-center justify-content-center gap-2 mt-3 bg-white rounded-2">
                                         <h1 class="
@@ -83,7 +85,7 @@ include '../admin/script.php';
                                                     colors="primary:#006cf1,secondary:#006cf1">
                                             </lord-icon>
                                         </a>
-                                        <a href="/admin/script.php?d_isbn=<?=$book['isbn']?>" class="btn btn-sm">
+                                        <a href="overview-book.php?d_isbn=<?=$book['isbn']?>" class="btn btn-sm">
                                             <lord-icon
                                                     src="https://cdn.lordicon.com/jmkrnisz.json"
                                                     trigger="hover"
@@ -156,7 +158,7 @@ include '../admin/script.php';
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="close">Cancel</button>
-                        <button type="submit" name="add-book" class="btn btn-success" id="submit"  >Save</button>
+                        <button type="submit" name="add-book" class="btn btn-success" id="submit"  >Enregestrer</button>
                     </div>
                 </form>
             </div>
@@ -169,9 +171,7 @@ include '../admin/script.php';
 <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</body>
-</html>
-
+<script src="../assets/js/main.js"></script>
 
 <?php
 if(isset($_GET['isbn'])){
@@ -182,6 +182,7 @@ if(isset($_GET['isbn'])){
         document.getElementById('headerH5').innerText= "modifier livre";
         document.getElementById("submit").setAttribute("name", "update-book");
         document.getElementById("submit").innerText= "Modifier";
+        document.getElementById('img').removeAttribute('required');
 
         document.getElementById('isbn').value = "<?=$GLOBALS['book']['isbn']?>";
         document.getElementById('title').value = "<?=$GLOBALS['book']['title']?>";
@@ -191,3 +192,7 @@ if(isset($_GET['isbn'])){
     </script>
     <?php
 }
+?>
+</body>
+</html>
+

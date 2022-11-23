@@ -76,3 +76,16 @@ function showPassword() {
         password.type = "password";
     }
 }
+
+function addBookForm(){
+    document.getElementById('headerH5').innerText = "Ajouter un livre";
+    document.getElementById('submit').setAttribute('name', 'add-book');
+    document.getElementById('submit').innerText = "Enregestrer";
+    document.getElementById("isbn").value = "";
+    document.getElementById("title").value = "";
+    document.getElementById("n_page").value = "";
+    document.getElementById("quantity").value = "";
+    document.getElementById("Description").value = "";
+
+    document.getElementById('img').setAttribute('required', 'required');
+}
