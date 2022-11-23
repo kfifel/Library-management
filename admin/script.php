@@ -74,13 +74,22 @@
     function deleteBook():void{
         global $conn;
         $isbn = $_GET['d_isbn'];
-        $req = "DELETE FROM book where isbn = '".$isbn."'";
-        $res = mysqli_query($conn, $req);
-        if(!$res){
-            echo mysqli_error($conn);
-            die;
+
+        if(unlink("../assets/images/book/".getNameImag($isbn))){
+            $req = "DELETE FROM book where isbn = '".$isbn."'";
+            $res = mysqli_query($conn, $req);
+            if(!$res){
+                $_SESSION['error'] = mysqli_error($conn);
+            }
+        }else{
+            $_SESSION['error'] = "Error is occurred!";
         }
         header("Location: ../pages/overview-book.php");
+    }
+    
+    function getNameImag($isbn):string{
+        global $conn;
+        return mysqli_fetch_assoc(mysqli_query($conn, "SELECT img FROM book WHERE isbn = '$isbn'"))['img'];
     }
 
     function login():void{
