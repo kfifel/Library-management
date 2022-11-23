@@ -5,9 +5,10 @@
 }
 .logo{
     position: relative;
-    left: 0;
-    height:4.5rem;
-    width:4.5rem;
+    left: -2vh;
+    top: 2vh;
+    height:4rem;
+    width:4rem;
 }
 .logoicon{
     height:2.5rem;
@@ -40,11 +41,35 @@ nav{
     height: 70%;
 }
 main{
-    margin-left: 8.33333333%;
+    margin-left: 12%;
 }
 footer{
     background-color: #34160E;
 }
 .mt-10{
     margin-top: 9%;
+}
+@media screen and (max-width: 978px) {
+    main{
+        margin-left: 17%;
+    }
+
+    .mt-10{
+        margin-top: 13%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .mt-10{
+        margin-top: 16%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .mt-10{
+        margin-top: 20%;
+    }
+}
+@media screen and (max-width: 509px) {
+    .mt-10{
+        margin-top: 26%;
+    }
 }
