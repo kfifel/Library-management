@@ -3,7 +3,7 @@
     if (!$_SESSION['id_admin']) {
         header("location: /pages/login.php");
     }
-    $conn = mysqli_connect("localhost", "root", "", "library");
+    $conn = mysqli_connect("localhost", "kfifel", "password", "library");
 
     try{
         if (!$conn)

@@ -21,7 +21,8 @@ create table if not exists book(
                                    title varchar(255) not null,
                                    n_page int(8),
                                    quantity varchar(255) not null,
-                                   description varchar(255)
+                                   description varchar(255),
+                                   img varchar(255) not null
 );
 create table if not exists lend(
                                    id_reader int(8),
